@@ -22,5 +22,4 @@ python manage.py migrate
 # Create superuser
 DJANGO_SUPERUSER_PASSWORD=test12345 DJANGO_SUPERUSER_EMAIL=f.kinuthia01@gmail.com DJANGO_SUPERUSER_USERNAME=frank python manage.py createsuperuser --noinput
 
-# Run server
-python manage.py runserver
+# Remove the runserver command - Render will use the start command from render.yaml instead
