@@ -18,7 +18,7 @@ python manage.py makemigrations
 python manage.py migrate 
 
 # Create superuser
-python manage.py createsuperuser --no-input --username frank --email f.kinuthia01@gmail.com --password test12345 --password test12345
+DJANGO_SUPERUSER_PASSWORD=test12345 DJANGO_SUPERUSER_EMAIL=f.kinuthia01@gmail.com DJANGO_SUPERUSER_USERNAME=frank python manage.py createsuperuser --noinput
 
 # Run server
 python manage.py runserver
