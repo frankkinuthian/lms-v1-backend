@@ -2,6 +2,10 @@
 # exit on error
 set -o errexit
 
+python -m venv venv
+
+venv\Scripts\activate
+
 # Create necessary directories
 mkdir -p staticfiles
 mkdir -p media
