@@ -3,8 +3,24 @@ services:
     name: lms-backend
     env: python
     buildCommand: ./build.sh
-    startCommand: gunicorn backend.wsgi:application --bind 0.0.0.0:$PORT
+    startCommand: .venv/bin/gunicorn backend.wsgi:application --bind 0.0.0.0:$PORT
     envVars:
       - key: PORT
         value: 8000
-      # ... other env vars ...
+      - key: PYTHON_VERSION
+        value: 3.9.18
+      - key: DATABASE_URL
+        fromDatabase:
+          name: lms_db
+          property: connectionString
+      - key: DJANGO_SECRET_KEY
+        generateValue: true
+      - key: DJANGO_DEBUG
+        value: "False"
+      - key: ALLOWED_HOSTS
+        value: ".onrender.com"
+    routes:
+      - route: lms-backend.onrender.com
+        service: lms-backend
+        type: http
+        port: 8000
