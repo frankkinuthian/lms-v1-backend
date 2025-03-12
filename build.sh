@@ -3,8 +3,7 @@
 set -o errexit
 
 python -m venv venv
-
-venv\Scripts\activate
+source venv/bin/activate
 
 # Create necessary directories
 mkdir -p staticfiles
