@@ -18,7 +18,7 @@ services:
       - key: DJANGO_DEBUG
         value: "False"
       - key: ALLOWED_HOSTS
-        value: ".onrender.com"
+        value: "lms-v1-backend.onrender.com,render.com,.onrender.com"
     routes:
       - route: lms-backend.onrender.com
         service: lms-backend
