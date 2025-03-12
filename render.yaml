@@ -3,7 +3,10 @@ services:
     name: lms-backend
     env: python
     buildCommand: ./build.sh
-    startCommand: .venv/bin/gunicorn backend.wsgi:application --bind 0.0.0.0:$PORT
+    startCommand: |
+      DJANGO_SETTINGS_MODULE=backend.settings \
+      ALLOWED_HOSTS=lms-v1-backend.onrender.com,render.com,.onrender.com,localhost,127.0.0.1 \
+      .venv/bin/gunicorn backend.wsgi:application --bind 0.0.0.0:$PORT
     envVars:
       - key: PORT
         value: 8000
@@ -17,8 +20,6 @@ services:
         generateValue: true
       - key: DJANGO_DEBUG
         value: "False"
-      - key: ALLOWED_HOSTS
-        value: "lms-v1-backend.onrender.com,render.com,.onrender.com"
     routes:
       - route: lms-backend.onrender.com
         service: lms-backend
